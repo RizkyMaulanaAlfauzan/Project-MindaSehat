@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pakar Psikolog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+<body>
+    <!-- Awal Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top" style="margin-bottom: 40px">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="static/image/logomindasehat2.png" height="36" alt="Logo" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Pakar Psikolog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Konseling</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#" style="margin-left: 15px">Logout</a>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Akhir Navbar -->
+    
+    <section class="jadwal-section" id="jadwal-section">
+        <div class="container jadwal-container">
+            <div class="card">
+                <div></div>
+                <div class="card-body" >
+                    <h4 class="mb-0 text-center text-black">Buat Jadwal Konsultasi</h4>
+                    <div class="row" style="margin-top: 20px;">
+                        <div class="col-md-2">
+                            <img src="static/image/logomindasehat2.png" class="img-fluid rounded-circle" alt="Profile Picture" width="150">
+                        </div>
+                        <div class="col-md-8">
+                            <h4 class="mb-3 text-black">DR.BLABLABLABLA</h4>
+                            <p class="mb-3 text-black">Lulusan blablabalblablabalblablablaba</p>
+                        </div>
+                    </div>
+                        <form>
+                            <div class="form-group mb-3 row">
+                                <label for="inputTempat" class="col-sm-2 col-form-label">Tempat Konsultasi :</label>
+                                <div class="col-sm-4">
+                                    <select class="form-select" aria-label="Default select example" id="tempatKonsul" name="" required>
+                                        <option value="1">Klinik A</option>
+                                        <option value="2">Klinik B</option>
+                                        <option value="3">Klinik C</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group mb-3 row">
+                                <label for="inputTanggal" class="col-sm-2 col-form-label">Tanggal/Bulan/Tahun :</label>
+                                <div class="col-sm-1">
+                                    <input type="number" class="form-control" id="day" name="day" placeholder="DD" min="1" max="31" required>
+                                </div>
+                                <div class="col-sm-1">
+                                    <select class="form-select" id="month" name="month" required>
+                                        <option value="1">Januari</option>
+                                        <option value="2">Februari</option>
+                                        <option value="3">Maret</option>
+                                        <option value="4">April</option>
+                                        <option value="5">Mei</option>
+                                        <option value="6">Juni</option>
+                                        <option value="7">Juli</option>
+                                        <option value="8">Agustus</option>
+                                        <option value="9">September</option>
+                                        <option value="10">Oktober</option>
+                                        <option value="11">November</option>
+                                        <option value="12">Desember</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-1">
+                                    <input type="number" class="form-control" id="year" name="year" placeholder="YYYY" min="1900" required>
+                                </div>
+                            </div>
+                            <div class="form-group mb-3 row">
+                                <label for="inputWaktu" class="col-sm-2 col-form-label">Jam Konsultasi :</label>
+                                <div class="col-sm-4">
+                                    <select class="form-select" aria-label="Default select example" id="tempatKonsul" name="" required>
+                                        <option value="1">09.00</option>
+                                        <option value="2">10.00</option>
+                                        <option value="3">11.00</option>
+                                        <option value="4">12.00</option>
+                                        <option value="5">13.00</option>
+                                        <option value="6">14.00</option>
+                                        <option value="7">15.00</option>
+                                        <option value="8">16.00</option>
+                                        <option value="9">17.00</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group mb-3 row">
+                                <div class="col-sm-2"></div> 
+                                <div class="col-sm-10">
+                                    <button type="submit" class="btn btn-primary">Konsultasi</button>
+                                    <button type="button" class="btn btn-secondary">Batal</button>
+                                </div>
+                            </div>
+                        </form>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+</html>
