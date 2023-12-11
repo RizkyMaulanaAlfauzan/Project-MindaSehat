@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>REGISTRASI | MINDASEHAT</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='logomindasehat.png') }}"
+      type="image/x-icon"
+    />
+    <meta property="og:title" content="Sweeter - the sweetest site" />
+    <meta property="og:description" content="mini project for Web Plus" />
+    <meta
+      property="og:image"
+      content="{{ url_for('static', filename='logomindasehat.png') }}"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  </head>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        width: 50%;
+        margin: 50px auto;
+        background-color: #97adc3;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(151,173,195);
+    }
+    h1 {
+        text-align: center;
+    }
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    label {
+        display: block;
+        margin-bottom: 6px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid ;
+    }
+    input[type="submit"] {
+        background-color:  #f0b7b3;
+        color: black;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color:#f0b7b3;
+    }
+    .error {
+        color: red;
+        margin-top: 5px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+   <center><img src="{{ url_for('static', filename='logomindasehat2.png') }}" alt="Logo MindaSehat" style="width: 120px; height: 100px;"  class="logo" style="display: block; margin: 0 auto;" ></center>
+    <h1>DAFTAR AKUN MINDASEHAT</h1>
+    <form action="/register" method="post">
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" >
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" >
+
+        <label for="confirm_password">Konfirmasi Password:</label>
+        <input type="password" id="confirm_password" name="confirm_password" >
+
+        <input type="submit" value="Register">
+        <p class="error" id="password_error" style="display: none;">Password dan konfirmasi password tidak cocok!</p>
+        <label for="confirm_password">Jika sudah punya akun silahkan login .....</label>
+    </form>
+</div>
+</body>
+</html>
