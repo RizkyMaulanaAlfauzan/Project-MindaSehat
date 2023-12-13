@@ -8,24 +8,37 @@ from flask import (
     url_for
 )   
 
-app = Flask(__name__)
+from pymongo import MongoClient
 
+app = Flask(__name__)
+client = MongoClient('mongodb+srv://rzadwiptri:kelompok5@cluster0.sbzask3.mongodb.net/')
+db = client['kelompokintel'] 
 
 @app.route("/")
 def home():
     return render_template("buatJadwal.html")
 
-@app.route('/registrasi', methods=['GET', 'POST'])
+@app.route('/registrasi', methods=['GET'])
+def show_registration_page():
+    return render_template('registrasi.html')
+
+@app.route('/registrasi', methods=['POST'])
 def register():
     if request.method == 'POST':
-        nama = request.form['nama']
+        name = request.form['name']
         email = request.form['email']
         password = request.form['password']
-        confirm_password = request.form['confirm_password']
-        if password != confirm_password:
-            return "Password dan konfirmasi password tidak cocok. Silakan coba lagi."
-        return "Registrasi berhasil untuk nama: {}, email: {}".format(nama, email)
-    return render_template('registrasi.html')
+
+        if db.users.find_one({'name': name}):
+            return 'Nama sudah digunakan, gunakan nama lain'
+
+        db.users.insert_one({
+            'name': name,
+            'email': email,
+            'password': password
+        })
+    
+        return redirect('/login') 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
