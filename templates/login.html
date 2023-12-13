@@ -7,6 +7,43 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
+<script>
+    function sign_in() {
+      let password = $("#password").val();
+      let email = $("#email").val();
+      let role = $("#role").val();
+
+      $.ajax({
+        type: "POST",
+        url: "/sign-in",
+        data: {
+          role_give: role,
+          email_give: email,
+          password_give: password,
+        },
+        success: function (response) {
+          if (response["result"] === "success") {
+            $.cookie("mytoken", response["token"], { path: "/" });
+            if (response["role"] == "pekerja") {
+              window.location.replace("/user-info");
+            } else {
+              window.location.replace("/job-post");
+            }
+          } else {
+            alert(response["msg"]);
+          }
+        },
+      });
+    }
+  </script>
+</head>
+<body>
+  <!-- Login -->
+  <div class="container login-container">
+    {% if msg %}
+    <div class="alert alert-warning" role="alert">{{ msg }}</div>
+    {% endif %}
+    <h2>Selamat datang di Placeholder</h2>
 
 <body>
             <!-- Awal Navbar -->
@@ -23,17 +60,16 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                <a class="nav-link active" aria-current="page" href="/">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Pakar Psikolog</a>
+                                <a class="nav-link active" aria-current="page" href="/artikel">Artikel</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Konseling</a>
+                                <a class="nav-link active" aria-current="page" href="/konsultasi">Pakar Psikolog</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/login"
-                                    style="margin-left: 15px">Login</a>
+                                <a class="nav-link active" aria-current="page" href="/login" style="margin-left: 15px">Login</a>
                             </li>
                         </ul>
                     </div>
@@ -52,10 +88,10 @@
                 <h2>Login Here!!</h2>
                 <input type="email" name="email" placeholder="Enter Email Here">
                 <input type="password" name="password" placeholder="Enter Password Here">
-                <button class="btnn"><a href="#">Login</a></button>
+                <button class="btnn"><a href="sign_in()">Login</a></button>
 
                 <p class="link">Jika kamu belum mempunyai akun, <br>
-                    <a href="/registrasi">Sign up </a> disini</a>
+                    <a href="/sign-up">Sign up </a> disini</a>
                 </p>
             </div>
         </div>
