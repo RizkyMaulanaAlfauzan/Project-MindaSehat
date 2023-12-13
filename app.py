@@ -33,7 +33,7 @@ def login():
         email = request.form['email']
         password = request.form['password']
         if email in [email] == password:
-            return "Login berhasil" 
+            return redirect(url_for('home'))
         else:
             return 'Login gagal. Periksa kembali email dan password Anda.'
     return render_template('login.html')
