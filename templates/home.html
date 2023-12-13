@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PROJECT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <style>
+    .navbar {
+      background-color: #ffffff;
+    }
+
+    .navbar-brand img {
+      margin-right: 10px;
+    }
+
+    .navbar-toggler {
+      border: none;
+    }
+
+    .navbar-toggler-icon {
+      background-color: #000000;
+    }
+
+    .navbar-nav .nav-link {
+      color: #000000;
+      margin-right: 15px;
+    }
+    .home-container {
+      padding: 20px;
+      background-color: #ffffff;
+      border: 1px solid #999999;
+    }
+
+    .home-content {
+      display: flex;
+      align-items: center;
+    }
+
+    .home-image {
+      max-width: 100%;
+      margin-right: 20px;
+      margin-left: 2rem;
+    }
+
+    .keterangan {
+      flex: 1;
+    }
+    .card {
+      display: flex;
+      align-items: start;
+      justify-content: center;
+      text-align: left;
+      border: 1px solid #ccc;
+      padding: 20px;
+      width: 40%;
+      margin: 20px auto;
+    }
+
+    .card-image {
+      width: 150px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-content h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .card-content p {
+      margin: 0;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-around;
+      background-color: #d5d5d5;
+      color: #000000;
+      padding: 20px;
+    }
+
+    .footer-column {
+      flex: 1;
+      margin-right: 20px;
+    }
+
+    .footer-logo {
+      max-width: 100px;
+    }
+  </style>
+  <body>
+    <!-- Awal Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="/img/logomindasehat.png" height="36" alt="Logo" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Pakar Psikolog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Konseling</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#" style="margin-left: 15px">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Akhir Navbar -->
+
+    <!-- Awal Main Home -->
+    <div class="home-container">
+      <div class="home-content">
+        <img src="/img/logomindasehat.png" style="margin-left: 10rem; margin-right: 5rem" alt="Gambar" class="home-image" />
+        <div class="keterangan">
+          <h1>Selamat Datang di Mindasehat</h1>
+          <p style="text-align: justify">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem soluta voluptates possimus blanditiis tempore velit commodi reiciendis, illum temporibus labore numquam saepe nihil non! Fugit numquam possimus asperiores nulla
+            necessitatibus sequi. Accusamus aut voluptates hic qui! Autem delectus quos fugiat repellendus deserunt beatae vero esse error voluptatibus totam aspernatur ea dolorum quo consequatur iusto temporibus, soluta, deleniti
+            voluptates eaque quaerat repellat? Placeat nemo enim, ipsum quas facere cum pariatur quidem quasi ipsam consequatur non, quis vel magni earum nesciunt amet perferendis neque! Dolor repudiandae quisquam in architecto accusantium
+            nihil, voluptates velit facere consequuntur fugit necessitatibus impedit provident sit error maxime.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Akhir Main Home -->
+
+    <!-- Awal Alasan -->
+    <div class="container">
+      <h2 class="section-title" style="text-align: center; margin-top: 10px">Alasan</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <a href="#" class="card bg-dark-alt border-0 rounded-0 mb-3">
+            <div class="card-body">
+              <img src="/img/logomindasehat.png" alt="" class="card-img-top" />
+              <p class="mb-0 text-secondary" style="text-align: center; margin-top: 7px">Website untuk memperkenalkan Sanga-sanga sebagai kota juang</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="#" class="card bg-dark-alt border-0 rounded-0 mb-3">
+            <div class="card-body">
+              <img src="/img/logomindasehat.png" alt="" class="card-img-top" />
+              <p class="mb-0 text-secondary" style="text-align: center; margin-top: 7px">Design UI mobile untuk aplikasi rental mobil online</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="#" class="card bg-dark-alt border-0 rounded-0 mb-3">
+            <div class="card-body">
+              <img src="/img/logomindasehat.png" alt="" class="card-img-top" />
+              <p class="mb-0 text-secondary" style="text-align: center; margin-top: 7px">Design UI mobile untuk aplikasi dompet digital</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Akhir Alasan -->
+
+    <!-- Footer -->
+    <div class="footer-container">
+      <div class="footer-column">
+        <img src="/static/logomindasehat.png" style="margin-top: 15px; align-items: center" alt="Logo" class="footer-logo" />
+      </div>
+      <div class="footer-column">
+        <h4>Alamat</h4>
+        <p>Jalan Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore dolorem quam placeat itaque non.</p>
+      </div>
+      <div class="footer-column">
+        <h4>Tentang Kami</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore tenetur explicabo harum amet autem!</p>
+      </div>
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <p>Email: info@example.com<br />Telepon: +123456789</p>
+      </div>
+    </div>
+    <!-- Akhir Footer -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>
