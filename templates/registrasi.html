@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>REGISTRASI | MINDASEHAT</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  </head>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        width: 50%;
+        margin: 50px auto;
+        background-color: #97adc3;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(151,173,195);
+    }
+    h1 {
+        text-align: center;
+    }
+    form {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    label {
+        display: block;
+        margin-bottom: 2px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid ;
+    }
+    input[type="submit"] {
+        background-color:  #f0b7b3;
+        color: black;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color:#f0b7b3;
+    }
+    .error {
+        color: red;
+        margin-top: 5px;    
+    }
+</style>
+<script>
+   
+    function validateRegistrasi() {
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        var confirmPassword = document.getElementById('confirm_password').value;
+
+        if (name.length < 5) {
+            alert("Nama harus memiliki minimal 5 karakter");
+            return false;
+        }
+
+        if (email.indexOf('@') === -1) {
+            alert("Email harus berisi tanda '@'");
+            return false;
+        }
+
+        var passwordnya = /^(?=.*\d)(?=.*[!@#$%^&*]).{8,20}$/;
+        if (!password.match(passwordnya)) {
+            alert("Password harus memiliki 8-20 karakter, angka, dan karakter spesial (!@#$%^&*)");
+            return false;
+        }
+
+        if (password !== confirmPassword) {
+            alert("Konfirmasi password harus sama dengan password");
+            return false;
+        }
+
+        window.location.href = "/login"; 
+        return true; 
+    }
+</script>
+</head>
+<body>
+<div class="container">
+    <center><img src="static/image/logomindasehat2.png" alt="Logo MindaSehat" style="width: 120px; height: 100px;"  class="logo" style="display: block; margin: 0 auto;" ></center>
+     <h1>DAFTAR AKUN MINDASEHAT</h1>
+     <form action="/registrasi" method="POST" onsubmit="return validateRegistrasi()">
+         <label for="email">Nama</label>
+         <input type="text" id="name" name="name" placeholder="masukkan minimal 5 karakter,angka, atau karakter khusus" >
+ 
+         <label for="email">Email:</label>
+         <input type="email" id="email" name="email" placeholder="ketik email kamu disini" >
+ 
+         <label for="password">Password:</label>
+         <input type="password" id="password" name="password" placeholder="masukkan 8-20 karakter, angka, karakter spesial (!@#$%^&*)" >
+ 
+         <label for="confirm_password">Konfirmasi Password:</label>
+         <input type="password" id="confirm_password" name="confirm_password" placeholder="konfirmasi password kamu disini"> 
+ 
+         <input type="submit" value="Register">
+         <p class="error" id="password_error" style="display: none;">Password dan konfirmasi password tidak cocok!</p>
+         <label for="confirm_password">Jika sudah punya akun silahkan <a href="/login"> Login </a> disini </a></label>
+</body>
+</html>
