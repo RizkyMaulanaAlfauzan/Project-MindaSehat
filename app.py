@@ -35,7 +35,16 @@ SECRET_KEY = "KELOMPOKLIMA"
 
 @app.route("/")
 def home():
+    return render_template("home.html")
+
+
+@app.route("/buatJadwal")
+def buatJadwal():
     return render_template("buatJadwal.html")
+
+@app.route("/konsultasi")
+def konsul():
+    return render_template("konsultasi.html")
 
 @app.route('/registrasi', methods=['GET'])
 def show_registration_page():
