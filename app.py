@@ -24,8 +24,11 @@ app = Flask(__name__)
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
-client = MongoClient("mongodb+srv://rzadwiptri:kelompok5@cluster0.sbzask3.mongodb.net/?retryWrites=true&w=majority")  # Ganti URL dengan URL MongoDB Anda
-db = client["db_mindasehat"]
+MONGODB_URI = os.environ.get("MONGODB_URI")
+DB_NAME =  os.environ.get("DB_NAME")
+
+client = MongoClient(MONGODB_URI)
+db = client[DB_NAME]
 
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 
