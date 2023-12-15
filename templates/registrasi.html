@@ -66,82 +66,25 @@
         margin-top: 5px;
     }
 </style>
-<script>
-    // Buat hide/show user sign up
-    function showSignUpUser() {
-        $(".select-container").hide();
-        $("#signuppsikologis").hide(); // Hide the other form
-        $("#signupuser").show(); // Show the user form
-      }
-      
-      function showSignUpPsikologis() {
-        $(".select-container").hide();
-        $("#signupuser").hide(); // Hide the other form
-        $("#signuppsikologis").show(); // Show the psikologis form
-      }
-      
+<script>      
 </script>
 </head>
 
 <body>
-    <!-- Selection Page -->
-    <div class="container select-container">
-        {% if msg %}
-        <div class="alert alert-warning" role="alert">{{ msg }}</div>
-        {% endif %}
-        <h2>Selamat datang</h2>
-        <h5>Anda mendaftar sebagai apa?</h5>
-        <form id="selectionForm">
-            <button type="button" class="btn btn-primary" onclick="showSignUpUser()">
-                Pengguna
-            </button>
-            <button type="button" class="btn btn-primary" onclick="showSignUpPsikologis()">
-                Psikologis
-            </button>
-        </form>
-    </div>
-                <div class="container signup-container" id="signuppsikologis">
-                    <center><img src="static/image/logomindasehat2.png" alt="Logo MindaSehat"
-                            style="width: 120px; height: 100px;" class="logo" style="display: block; margin: 0 auto;">
-                    </center>
-                    <h1>DAFTAR AKUN MINDASEHAT</h1>
-                    <form action="/sign_up/psikologis" method="POST" >
-                        <label for="email">Nama</label>
-                        <input type="text" placeholder="masukkan minimal 5 karakter,angka, atau karakter khusus"
-                            id="name" name="name" required>
-
-                        <label for="email">Email:</label>
-                        <input type="email" placeholder="ketik email kamu disini" id="name" name="name" required>
-
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" name="password"
-                            placeholder="masukkan 8-20 karakter, angka, karakter spesial (!@#$%^&*)">
-
-                        <label for="confirm_password">Konfirmasi Password:</label>
-                        <input type="password" id="confirm_password" name="confirm_password"
-                            placeholder="konfirmasi password kamu disini">
-
-                        <input type="submit" value="Register">
-                        <p class="error" id="password_error" style="display: none;">Password dan konfirmasi password
-                            tidak cocok!
-                        </p>
-                        <label for="confirm_password">Jika sudah punya akun silahkan <a href="/login"> Login </a> disini
-                            </a></label>
-                        </div>
-                            
-                            <div class="container signup-container" id="signupuser">
+  
+                            <div class="container">
                                 <center><img src="static/image/logomindasehat2.png" alt="Logo MindaSehat"
                                         style="width: 120px; height: 100px;" class="logo" style="display: block; margin: 0 auto;">
                                 </center>
                                 <h1>DAFTAR AKUN MINDASEHAT</h1>
-                                <form action="/sign_up/user" method="POST" >
-                                    <label for="email">Nama</label>
-                                    <input type="text" placeholder="masukkan minimal 5 karakter,angka, atau karakter khusus"
-                                        id="name" name="name" required>
-            
+                                <form action="/sign-up-user" method="POST">
+                                    <!-- pastikan name="email" dan name="name" -->
+                                    <label for="name">Nama</label>
+                                    <input type="text" placeholder="masukkan minimal 5 karakter, angka, atau karakter khusus" id="name" name="name" required>
+                                    
                                     <label for="email">Email:</label>
-                                    <input type="email" placeholder="ketik email kamu disini" id="name" name="name" required>
-            
+                                    <input type="email" placeholder="ketik email kamu disini" id="email" name="email" required>
+                                
                                     <label for="password">Password:</label>
                                     <input type="password" id="password" name="password"
                                         placeholder="masukkan 8-20 karakter, angka, karakter spesial (!@#$%^&*)">
@@ -157,6 +100,7 @@
                                     <label for="confirm_password">Jika sudah punya akun silahkan <a href="/login"> Login </a> disini
                                         </a></label>
                                     </div>
+                                </form>
 </body>
 
 </html>
