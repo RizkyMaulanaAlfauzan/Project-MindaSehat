@@ -38,7 +38,7 @@ TOKEN_KEY = "tokenkelompoklima"
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("home.html")
 
 @app.route("/konsultasi")
 def konsul():
@@ -138,7 +138,7 @@ def login():
 
 @app.route("/home")
 def home():
-    return render_template("home.html")
+    return render_template("home2.html")
 
 @app.route("/psikolog")
 def psikolog():
