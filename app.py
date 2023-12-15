@@ -24,11 +24,8 @@ app = Flask(__name__)
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
-MONGODB_URI = os.environ.get("MONGODB_URI")
-DB_NAME =  os.environ.get("DB_NAME")
-
-client = MongoClient(MONGODB_URI)
-db = client[DB_NAME]
+client = MongoClient("mongodb+srv://rzadwiptri:kelompok5@cluster0.sbzask3.mongodb.net/?retryWrites=true&w=majority")  # Ganti URL dengan URL MongoDB Anda
+db = client["db_mindasehat"]
 
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 
@@ -37,7 +34,7 @@ TOKEN_KEY = "tokenkelompoklima"
 
 
 @app.route("/")
-def home():
+def index():
     return render_template("index.html")
 
 @app.route("/konsultasi")
@@ -46,7 +43,7 @@ def konsul():
 
 @app.route("/buatJadwal")
 def buatJadwal():
-    return render_template("home/buatJadwal.html")
+    return render_template("buatJadwal.html")
 
 @app.route("/sign-up")
 def sign_up():
@@ -61,36 +58,22 @@ def sign_up_user():
     email_info = db.user.find_one({"email": email_receive})
     password_receive = request.form["password"]
     confirm_password_receive = request.form["confirm_password"]
-
-    # Periksa apakah input email memiliki nama yang benar
-    if "email" not in request.form:
-        raise BadRequestKeyError("Parameter 'email' tidak ditemukan")
-
-    # Periksa apakah input email dikirimkan dengan metode POST
-    if request.method != "POST":
-        raise BadRequestKeyError("Metode HTTP harus POST")
-
-    # Periksa apakah data email tidak diubah atau dihapus oleh middleware atau dekorator
-    if not email_receive:
-        raise BadRequestKeyError("Parameter 'email' tidak boleh kosong")
-
-    # Periksa apakah kata sandi dan konfirmasi kata sandi cocok
+    if email_info:
+        return redirect(url_for("sign_up", msg="Email Sudah Terdaftar"))
+    if len(password_receive) < 8:
+        return redirect(url_for("sign_up", msg="Password Terlalu Pendek"))
     if password_receive != confirm_password_receive:
-        return redirect(url_for("sign_up", msg="Password Anda Tidak valid, Mohon di cek kembali!!!"))
-
-    # Hash kata sandi
+        return redirect(url_for("sign_up", msg="Password Tidak valid"))
     password_hash = hashlib.sha256(password_receive.encode("utf-8")).hexdigest()
-
-    # Simpan data pengguna ke database
     doc = {
         "uuid": theId,
         "username": username_receive,
         "email": email_receive,
-        "password": password_hash,  # password
-    }
-    db.user.insert_one(doc)
+        "password": password_hash, 
 
-    # Alihkan ke halaman login
+   }
+    db.user.insert_one(doc)
+    # return jsonify({"result": "success"})
     return redirect(url_for("login", msg="Silahkan Login"))
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -101,9 +84,9 @@ def login():
         pw_hash = hashlib.sha256(password_receive.encode("utf-8")).hexdigest()
         role = request.form["role_give"]
         if role == "user":
-            namespace = db.seeker
+            namespace = db.user
         elif role == "psikolog":
-            namespace = db.company
+            namespace = db.psikolog
         else:
             return jsonify(
                 {
@@ -139,12 +122,24 @@ def login():
     token_receive = request.cookies.get(TOKEN_KEY)
     if token_receive:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=["HS256"])
-        if payload["role"] == "user":
-            return redirect(url_for("konsultasi"))
-        elif payload["role"] == "psikolog":
-            return redirect(url_for("EditKonsultasi"))
-    msg = request.args.get("msg")
-    return render_template("login.html", msg=msg)
+        
+            # Redirect sesuai peran setelah berhasil login
+        if role == "user":
+            return redirect(url_for("home"))  # Ganti "home" dengan rute yang sesuai untuk pengguna
+        elif role == "psikolog":
+            return redirect(url_for("psikolog"))  # Ganti "edit_konsultasi" dengan rute yang sesuai untuk psikolog
+        else:
+            return jsonify({"result": "fail", "msg": "Email atau password salah"})
+    return render_template("login.html")    
+
+
+@app.route("/home")
+def home():
+    return render_template("home.html")
+
+@app.route("/psikolog")
+def psikolog():
+    return render_template("psikolog.html",)
 
 
 if __name__ == "__main__":

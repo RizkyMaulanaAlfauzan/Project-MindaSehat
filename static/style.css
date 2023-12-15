@@ -4,7 +4,7 @@
 }
 
 .main{
-    width: 100%;
+    width: 95%;
     background: white;
     background-position: center;
     background-size: cover;
@@ -17,7 +17,7 @@
 
 
 .content{
-    width: 1200px;
+    width: 1000px;
     height: auto;
     margin: auto;
     color: #809bce;
@@ -41,7 +41,7 @@
 }
 
 .content .cn{
-    width: 160px;
+    width: 200px;
     height: 40px;
     background: peachpuff;
     border: none;
@@ -71,12 +71,12 @@
 
 .form{
     width: 330px;
-    height: 380px;
+    height: 450px;
     background: linear-gradient(to top, #ffc09f);
     border: 2px solid rosybrown;
     position: absolute;
     top: -20px;
-    left: 700px;
+    left: 600px;
     transform: translate(0%,-5%);
     border-radius: 10px;
     padding: 25px;
@@ -111,6 +111,20 @@
 .form input:focus{
     outline: none;
 }
+.form select{
+    width: 280px;
+    height: 40px;
+    background: transparent;
+    border-bottom: 2px solid rosybrown;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    color: rosybrown;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-top: 30px;
+    font-family: sans-serif;
+}
 
 ::placeholder{
     color: #d4afb9;
@@ -122,7 +136,7 @@
     height: 40px;
     background: #be578b;
     border: none;
-    margin-top: 40px;
+    margin-top: 20px;
     font-size: 18px;
     border-radius: 40px;
     cursor: pointer;
