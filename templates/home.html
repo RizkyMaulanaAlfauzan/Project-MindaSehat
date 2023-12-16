@@ -6,6 +6,9 @@
     <title>PROJECT</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <link rel="stylesheet" href="/static/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
   </head>
   <style>
     .navbar {
@@ -108,17 +111,25 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="/home">Home</a>
             </li>
+            {% if role != 'psikolog'%}
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/pakar">Pakar Psikolog</a>
             </li>
+            {%endif%}
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/konsultasi">Konseling</a>
+              <a class="nav-link active" aria-current="page" href="/konsultasi">Kosul</a>
             </li>
+            {% if role != 'viewer'%}
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" onclick="logout()" href="#" style="margin-left: 15px">Logout</a>
+              <a class="nav-link active" aria-current="page" onclick="logout()" href="" style="margin-left: 15px">Logout</a>
             </li>
+            {%else%}
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/login" style="margin-left: 15px"> Login</a>
+            </li>
+            {% endif %}
           </ul>
         </div>
       </div>
@@ -227,6 +238,12 @@
     </div>
     <!-- Akhir Footer -->
 
+    <script>
+      function logout() {
+        $.removeCookie("tokenkelompoklima", { path: "/" });
+        window.location.replace("/login");
+      }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>
 </html>

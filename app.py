@@ -37,12 +37,27 @@ TOKEN_KEY = "tokenkelompoklima"
 
 
 @app.route("/")
-def home():
+def index():
     return render_template("index.html")
 
 @app.route("/home")
 def homeAfter():
-    return render_template("home.html")
+    token_receive = request.cookies.get(TOKEN_KEY)
+    
+    msg = request.args.get("msg")
+    try:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=["HS256"])
+        user_info = db.user.find_one({"email": payload["id"]})
+        if user_info:
+            role = user_info["role"]
+            return render_template("home.html", role=role,  msg=msg)
+        return redirect(url_for("login"))
+
+    except jwt.ExpiredSignatureError:
+        return redirect(url_for("login", msg="Your token has expired"))
+    except jwt.exceptions.DecodeError:
+        return redirect(url_for("login", msg="Your token has expired"))
+        
 @app.route("/pakar")
 def pakar():
     token_receive = request.cookies.get(TOKEN_KEY)
@@ -176,17 +191,15 @@ def sign_up():
 def sign_up_user():    
     username_receive = request.form["name"]
     email_receive = request.form["email"]
-    email_info = db.user.find_one({"email": email_receive})
+    akun_info = db.user.find_one({"$or": [{"email":email_receive},{"username":username_receive}]})
     password_receive = request.form["password"]
     confirm_password_receive = request.form["confirm_password"]
 
-    if email_info:
-        return redirect(url_for("sign_up", msg="Email Sudah Terdaftar"))
+    if akun_info:
+        return redirect(url_for("sign_up", msg="Nama / Email Sudah Terdaftar"))
     # Periksa apakah kata sandi dan konfirmasi kata sandi cocok
     if password_receive != confirm_password_receive:
-        return redirect(url_for("sign_up", msg="Password Anda Tidak valid, Mohon di cek kembali!!!"))
-
-    # Hash kata sandi
+        return redirect(url_for("sign_up", msg="Password Tidak valid"))
     password_hash = hashlib.sha256(password_receive.encode("utf-8")).hexdigest()
 
     # Simpan data pengguna ke database
@@ -198,7 +211,7 @@ def sign_up_user():
     }
     db.user.insert_one(doc)
 
-    # Alihkan ke halaman login
+    # return jsonify({"result": "success"})
     return redirect(url_for("login", msg="Silahkan Login"))
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -241,7 +254,7 @@ def login():
     token_receive = request.cookies.get(TOKEN_KEY)
     if token_receive:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=["HS256"])        
-        return redirect(url_for("konsul"))        
+        return redirect(url_for("homeAfter"))        
     msg = request.args.get("msg")
     return render_template("login.html", msg=msg)
 

@@ -114,12 +114,15 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/">Artikel</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/konsultasi">Pakar Psikolog</a>
-            </li>
+            {% if role != 'user'%}
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/login" style="margin-left: 15px">Login</a>
             </li>
+            {%else%}
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" onclick="logout()" href="" style="margin-left: 15px">Logout</a>
+            </li>
+            {% endif %}
           </ul>
         </div>
       </div>

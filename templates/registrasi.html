@@ -66,13 +66,14 @@
         margin-top: 5px;
     }
 </style>
-<script>      
-</script>
+
 </head>
 
 <body>
-  
                             <div class="container">
+                                {% if msg %}
+                                <div class="alert alert-warning" role="alert">{{ msg }}</div>
+                                {% endif %}
                                 <center><img src="static/image/logomindasehat2.png" alt="Logo MindaSehat"
                                         style="width: 120px; height: 100px;" class="logo" style="display: block; margin: 0 auto;">
                                 </center>

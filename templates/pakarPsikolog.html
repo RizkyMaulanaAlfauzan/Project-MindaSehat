@@ -92,7 +92,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
+              <a class="nav-link active" aria-current="page" href="/home">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" style="margin-left: 60px; margin-right: 60px" aria-current="page" href="/pakar">Pakar Psikolog</a>
@@ -106,7 +106,7 @@
             </li>
             {%else%}
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" onclick="logout()" href="" style="margin-left: 15px">Logout</a>
+              <a class="nav-link active" aria-current="page" onclick="logout()" href="#" style="margin-left: 15px">Logout</a>
             </li>
             {% endif %}
             
@@ -153,7 +153,7 @@
     <script>
       function logout() {
         $.removeCookie("tokenkelompoklima", { path: "/" });
-        window.location.replace("/login");
+        window.location.href = "/login";
       }
     </script>
   </body>

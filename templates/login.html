@@ -36,7 +36,7 @@
 <body>
             <!-- Awal Navbar -->
             <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
-                <div class="container">
+                <div class="container">                    
                     <a class="navbar-brand" href="#">
                         <img src="/static/image/logomindasehat.png" height="45" alt="Logo" />
                     </a>
@@ -71,8 +71,6 @@
             <h1>MindaSehat</h1>
             <p class="par">Melangkah Menuju Kesehatan Mental Optimal</p>
 
-            <button class="cn"><a href="#">JOIN US</a></button>
-
             <div class="form">
                 {% if msg %}
                 <div class="alert alert-warning" role="alert">{{ msg }}</div>
@@ -80,12 +78,11 @@
                 <h2>Login Here!!</h2>
                 <input type="email" name="email" id="email" placeholder="Enter Email Here">
                 <input type="password" name="password" id="password" placeholder="Enter Password Here">
-               
                 <button class="btnn" type="button" onclick="sign_in()">Login</button>
-
                 <p class="link">Jika kamu belum mempunyai akun, <br>
                     <a href="/sign-up">Sign up </a> disini</a>
                 </p>
+            </form>
             </div>
         </div>
     </div>
