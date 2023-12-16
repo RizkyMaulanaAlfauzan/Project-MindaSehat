@@ -6,6 +6,9 @@
     <title>KONSULTASI</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <link rel="stylesheet" href="..." />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
   </head>
   <style>
     .navbar {
@@ -81,7 +84,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
       <div class="container">
         <a class="navbar-brand" href="#">
-          <img src="/img/logomindasehat.png" height="36" alt="Logo" />
+          <img src="static/image/logomindasehat2.png" height="36" alt="Logo" />
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -92,14 +95,21 @@
               <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" style="margin-left: 60px; margin-right: 60px" aria-current="page" href="artikel">Artikel</a>
+              <a class="nav-link active" style="margin-left: 60px; margin-right: 60px" aria-current="page" href="/pakar">Pakar Psikolog</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" style="margin-left: 60px; margin-right: 60px" aria-current="page" href="/konsultasi">Pakar Psikolog</a>
+              <a class="nav-link active" style="margin-left: 60px; margin-right: 60px" aria-current="page" href="/konsultasi">Konsultasi</a>
             </li>
+            {% if role != 'user'%}
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/login" style="margin-left: 15px">Login</a>
             </li>
+            {%else%}
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" onclick="logout()" href="" style="margin-left: 15px">Logout</a>
+            </li>
+            {% endif %}
+            
           </ul>
         </div>
       </div>
@@ -113,31 +123,9 @@
       <div class="card">
         <img src="/img/profilepicture.png" alt="Image" class="card-image" />
         <div class="card-content">
-          <h3>Nama Psikolog</h3>
+          <h3>{{psikolog.username}}</h3>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, tempore, perferendis rem magni vel eos amet alias perspiciatis sit officia totam aperiam non fuga corporis nostrum eligendi magnam numquam eveniet!</p>
-          <a href="#" style="padding: 10px 20px; background-color: #97adc3; color: #fff; border-radius: 5px; text-decoration: none; transition: background-color 0.3s ease; width: fit-content">Konsultasi</a>
-        </div>
-      </div>
-    </div>
-    <div class="card-container">
-      <!-- Card -->
-      <div class="card">
-        <img src="/img/profilepicture.png" alt="Image" class="card-image" />
-        <div class="card-content">
-          <h3>Nama Psikolog</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, tempore, perferendis rem magni vel eos amet alias perspiciatis sit officia totam aperiam non fuga corporis nostrum eligendi magnam numquam eveniet!</p>
-          <a href="#" style="padding: 10px 20px; background-color: #97adc3; color: #fff; border-radius: 5px; text-decoration: none; transition: background-color 0.3s ease; width: fit-content">Konsultasi</a>
-        </div>
-      </div>
-    </div>
-    <div class="card-container">
-      <!-- Card -->
-      <div class="card">
-        <img src="/img/profilepicture.png" alt="Image" class="card-image" />
-        <div class="card-content">
-          <h3>Nama Psikolog</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, tempore, perferendis rem magni vel eos amet alias perspiciatis sit officia totam aperiam non fuga corporis nostrum eligendi magnam numquam eveniet!</p>
-          <a href="#" style="padding: 10px 20px; background-color: #97adc3; color: #fff; border-radius: 5px; text-decoration: none; transition: background-color 0.3s ease; width: fit-content">Konsultasi</a>
+          <a href="/buatJadwal" style="padding: 10px 20px; background-color: #97adc3; color: #fff; border-radius: 5px; text-decoration: none; transition: background-color 0.3s ease; width: fit-content">Konsultasi</a>
         </div>
       </div>
     </div>
@@ -162,5 +150,11 @@
       </div>
     </div>
     <!-- Akhir Footer -->
+    <script>
+      function logout() {
+        $.removeCookie("tokenkelompoklima", { path: "/" });
+        window.location.replace("/login");
+      }
+    </script>
   </body>
 </html>
